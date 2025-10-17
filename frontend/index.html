@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monitor del Sistema</title>
-  <link rel="stylesheet" href="diseño.css">
+  <link rel="stylesheet" href="diseno.css">
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <style>
     /* Modo desactivado (sin fondo Matrix) */
@@ -296,7 +296,7 @@
       // Servidor Principal
       document.getElementById('server1-status').innerHTML =
         `Estado: <span style="color:#888;">Verificando...</span>`;
-      fetch('http://localhost:3000/api/sistema')
+      fetch('http://192.168.100.84:3000/api/sistema')
         .then(res => res.ok ? res.json() : Promise.reject())
         .then(() => document.getElementById('server1-status').innerHTML =
           `Estado: <span style="color:#00fff7;">Prendido</span>`)
@@ -366,7 +366,7 @@
     let socket = null;
     function conectarSocket() {
       desconectarSocket();
-      let url = servidorActual === 1 ? 'http://localhost:3000' : 'http://localhost:3001';
+      let url = servidorActual === 1 ? 'http://192.168.100.84:3000' : 'http://localhost:3001';
       socket = io(url);
       socket.on('connect', () => document.getElementById('status').textContent = 'Conectado');
       socket.on('disconnect', () => document.getElementById('status').textContent = 'Desconectado');
